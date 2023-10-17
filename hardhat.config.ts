@@ -8,9 +8,54 @@ import 'hardhat-contract-sizer';
 
 dotenv.config();
 
+const SOLC_SETTINGS = {
+  optimizer: {
+    enabled: true,
+    runs: 1_000,
+  },
+};
+
 const config: HardhatUserConfig = {
+  etherscan: {
+    apiKey: {
+      polygonMumbai: "XEA23EH93XPPHIKNSHK597YV9W7CBEYQNC",
+      // moonbeam: process.env.MOONBEAM_SCAN,
+      moonbaseAlpha: "Y64XAKBDMT98S9CYAFV8BV6996JMK3VCV3",
+      fantom: "H41IXKADQQEDN1S8PH2QSXVNTH7Q7M4FKB",
+      goerli: "V4H2YT9CQ5H4ABND374WI6E4VQ3VNQTCTA",
+    },
+  },
   solidity: {
-    version: '0.8.21',
+    compilers: [
+      {
+        version: "0.8.0",
+        settings: SOLC_SETTINGS,
+      },
+      {
+        version: "0.8.1",
+        settings: SOLC_SETTINGS,
+      },
+      {
+        version: "0.8.9",
+        settings: SOLC_SETTINGS,
+      },
+      {
+        version: "0.8.11",
+        settings: SOLC_SETTINGS,
+      },
+      {
+        version: "0.8.17",
+        settings: SOLC_SETTINGS,
+      },
+      {
+        version: "0.8.18",
+        settings: SOLC_SETTINGS,
+      },
+      {
+        version: "0.8.21",
+        settings: SOLC_SETTINGS,
+      },
+    ],
     settings: {
       evmVersion: 'london',
       optimizer: {
